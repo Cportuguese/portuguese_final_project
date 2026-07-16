@@ -111,8 +111,7 @@
                                             <form
                                                 method="POST"
                                                 action="{{ route('students.destroy', $student) }}"
-                                                class="delete-form"
-                                                data-confirm-message="{{ __('Are you sure you want to delete this student?') }}"
+                                                onsubmit="return confirm('{{ __('Are you sure you want to delete this student?') }}');"
                                             >
                                                 @csrf
                                                 @method('DELETE')
@@ -158,15 +157,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                const message = this.getAttribute('data-confirm-message');
-                if (!confirm(message)) {
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
 </x-app-layout>
