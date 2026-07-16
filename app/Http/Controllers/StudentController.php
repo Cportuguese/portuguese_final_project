@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\StudentCreated;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class StudentController extends Controller
 {
     /**
-     * Display a listing of students.
+     * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
         $students = Student::query()
             ->orderBy('last_name')
@@ -25,21 +25,19 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for creating a new student.
+     * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create()
     {
         return view('students.create');
     }
 
     /**
-     * Store a newly created student.
+     * Store a newly created resource in storage.
      */
     public function store(StoreStudentRequest $request): RedirectResponse
     {
-        $student = Student::create($request->validated());
-
-        broadcast(new StudentCreated($student));
+        Student::create($request->validated());
 
         return redirect()
             ->route('students.index')
@@ -47,7 +45,15 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified student.
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
      */
     public function edit(Student $student): View
     {
@@ -55,7 +61,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Update the specified student.
+     * Update the specified resource in storage.
      */
     public function update(UpdateStudentRequest $request, Student $student): RedirectResponse
     {
@@ -67,7 +73,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Remove the specified student.
+     * Remove the specified resource from storage.
      */
     public function destroy(Student $student): RedirectResponse
     {

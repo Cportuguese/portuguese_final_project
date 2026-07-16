@@ -21,7 +21,6 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div id="student-alert"></div>
             @if (session('status') === 'student-created')
                 <div class="px-4 py-3 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/30 text-sm text-green-700 dark:text-green-300">
                     {{ __('Student created successfully.') }}
@@ -75,9 +74,9 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700/80" id="student-table">
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700/80">
                             @forelse ($students as $student)
-                                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/40 transition-colors" data-student-id="{{ $student->id }}">
+                                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/40 transition-colors">
                                     <td class="px-6 py-4 text-gray-900 dark:text-gray-100 font-medium whitespace-nowrap">
                                         {{ $student->first_name }}
                                     </td>
@@ -127,7 +126,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr data-empty-state>
+                                <tr>
                                     <td colspan="7" class="px-6 py-16 text-center">
                                         <div class="mx-auto max-w-sm">
                                             <p class="text-base font-medium text-gray-900 dark:text-gray-100">
