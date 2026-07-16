@@ -20,10 +20,10 @@ class Student extends Model
     public static function yearLevels(): array
     {
         return [
-            '1st' => 'Year 1',
-            '2nd' => 'Year 2',
-            '3rd' => 'Year 3',
-            '4th' => 'Year 4',
+            1 => 'Year 1',
+            2 => 'Year 2',
+            3 => 'Year 3',
+            4 => 'Year 4',
         ];
     }
 
