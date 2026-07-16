@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
         'first_name',
         'last_name',
         'email',
-        'student_numbers',
+        'student_number',
         'year_level',
         'course'
     ])]
